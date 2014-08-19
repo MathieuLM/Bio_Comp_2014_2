@@ -3,33 +3,23 @@
 file = open('Homosapiens_Chromosome7.fasta', 'r');
 header = file.readline(); # first line is the header
 
-X = "TTT"; # marker of separation between sequences
+# number of subsequences encountered
+nb_seq = 0;
+#number of consecutive T read
+nb_T = 0;
 
-# reading the first line
-line = file.readline().strip();
-# initializing the dictionnary with a fake key
-dico = dict({'fake' : 0 });
-
-# looping through the lines
-#for i in xrange(3):
-while line != '':
-	# using the marker to split the line
-	#print line+'\n\n\n';
-	seq = line.split(X);
-	#print seq;
-	size = len(seq);
-	# insert the subsequences detected
-	#for i in xrange(0, size-1):
-		#if seq[i] not in dico:
-			#dico[seq[i]] = 0;
-	# concatening the leftover with the next line
-	leftover = seq[size-1];
-	#print leftover;
-	line = file.readline().strip();
-	#print line;
-	line = leftover + line;
-
-print 'Number of unique subsequences: ' + str(len(dico));
+# reading the rest of the file
+line = file.read().strip();
+size = len(line);
+# going through the file
+for i in range(size):
+    if line[i] == 'T':
+        nb_T = nb_T + 1;
+        if nb_T == 3:
+            nb_T = 0;
+            nb_seq = nb_seq + 1;
+            
+print('Number of unique subsequences: ' + str(nb_seq+1));
 
 file.close();
 

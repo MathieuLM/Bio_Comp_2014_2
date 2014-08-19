@@ -17,7 +17,7 @@ while seq != '':
 	seq = file.readline(5);
 # end while 
 
-print 'Number of unique subsequences: ' + str(len(dico));
+print('Number of unique subsequences: ' + str(len(dico)));
 
 file.close();
 

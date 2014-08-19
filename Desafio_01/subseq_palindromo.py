@@ -11,17 +11,16 @@ dico = dict({'fake' : 0});
 # looping through the file
 while seq != '':
 	if seq != '\n':
-			if seq not in dico:
-				rev = seq[::-1];
-				if seq == rev:
-					dico[seq] = 0;
+		if seq not in dico:
+			rev = seq[::-1];
+			if seq == rev: # palindrom detected
+				dico[seq] = 0;
 	# next subsequence
 	seq = file.readline(7);
-# end while 
+# end while
 
 del dico['fake'];
-print 'Number of unique palindroms: ' + str(len(dico));
-print dico;
+print('Number of unique palindroms: ' + str(len(dico)));
 
 file.close();
 

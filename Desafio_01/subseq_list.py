@@ -11,20 +11,14 @@ seq = file.readline(5);
 # looping through the file
 while seq != '':
 	if seq != '\n':
-		# insert into the list
-		seq_list.append(seq);
-		# remove previous occurence if it exists
-		if seq_list.count(seq) > 1:
-			seq_list.remove(seq);
-			#print 'Already seen: ' + seq;
-		else:
-			#print 'New subsequence: ' + seq;
-			pass;
+		# insert if first occurence
+		if seq_list.count(seq) == 0:
+			seq_list.append(seq);
 	# next subsequence
 	seq = file.readline(5);
 # end while 
 
-print 'Number of unique subsequences: ' + str(len(seq_list));
+print('Number of unique subsequences: ' + str(len(seq_list)));
 
 file.close();
 
